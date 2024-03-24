@@ -31,12 +31,18 @@
 import unittest
 
 from supybot.test import *
+from supybot import log
 
-
+NO_NETWORK_REASON = "Network-based tests are disabled by --no-network"
 class KNMITestCase(PluginTestCase):
     plugins = ('KNMI',)
 
-    def testOutput(self):
+    @unittest.skipUnless(network, NO_NETWORK_REASON)
+    def testPrediction(self):
         self.assertNotError('w1')
+        self.assertNotError('w2')
+        self.assertNotError('w3')
+        self.assertNotError('w4')
+        self.assertNotError('w5')
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
