@@ -37,17 +37,18 @@ import supybot
 from supybot import world
 
 # Use this for the version of this plugin.
-__version__ = "0.2"
+__version__ = "0.3"
 
 # XXX Replace this with an appropriate author or supybot.Author instance.
-__author__ = "Dorian Harmans"
+__author__ = getattr(supybot.authors, 'woohooyeah',
+                     supybot.Author('Dorian Harmans', 'woohooyeah', 'dorian@woohooyeah.nl'))
 
 # This is a dictionary mapping supybot.Author instances to lists of
 # contributions.
 __contributors__ = {}
 
 # This is a url where the most recent plugin package can be downloaded.
-__url__ = ''
+__url__ = 'https://github.com/woohooyeah/limnoria-plugins/tree/master/KNMI'
 
 from . import config
 from . import plugin
