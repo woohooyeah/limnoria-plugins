@@ -45,6 +45,15 @@ import supybot.plugins as plugins
 import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 
+try:
+    from supybot.i18n import PluginInternationalization
+
+    _ = PluginInternationalization("Spotify")
+except ImportError:
+    # Placeholder that allows to run the plugin on a bot
+    # without the i18n module
+    _ = lambda x: x
+
 
 class Spotify(callbacks.Plugin):
     """If a Spotify URI is posted, this plugin replies with Artist and Song
@@ -141,6 +150,7 @@ class Spotify(callbacks.Plugin):
                 apiurl = "https://api.spotify.com/v1/"
                 apiurl += t.replace("spotify:", "").replace("track", "tracks").replace("artist", "artists").replace("album", "albums").replace("playlist", "playlists").replace(":","/")
 
+                # This output can be used for checking whether the constructed API URL is correct
                 self.log.info('This is the API URL: "%s"' % apiurl)
 
                 authheaders = { "Authorization": f"Bearer {access_token}" }
